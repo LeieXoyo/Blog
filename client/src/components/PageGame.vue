@@ -12,11 +12,13 @@
             cols="3"
           >
             <v-card
-              @click="show_image(item.id)"
+              @click="show_game(item.id)"
             >
               <v-img
+                class="align-end"
                 :src="item.img_url"
               >
+                <v-card-title>{{ item.name }}</v-card-title>
               </v-img>
             </v-card>
           </v-col>
@@ -24,14 +26,22 @@
       </v-col>
     </v-row>
     <v-dialog
+      fullscreen
       v-model="dialog"
     >
-      <v-card>
-        <v-img
-          :src="showedImage ? showedImage.img_url : ''"
-        >
-        </v-img>
-      </v-card>
+      <v-toolbar dark color="primary">
+        <v-btn icon dark @click="dialog = false">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+        <v-toolbar-title>{{ showedGame ? showedGame.name : '' }}</v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
+      <iframe
+        height="100%"
+        width="100%"
+        :src="showedGame ? showedGame.html_url : ''"
+      >
+      </iframe>
     </v-dialog>
   </v-container>
 </template>
@@ -41,11 +51,11 @@
     data: () => ({
       items: null,
       dialog: false,
-      showedImage: null,
+      showedGame: null,
     }),
     mounted () {
       axios
-        .get("http://127.0.0.1:5000/api/images")
+        .get("http://127.0.0.1:5000/api/games")
         .then(res => {
           this.items = res.data
         })
@@ -54,10 +64,10 @@
         });
     },
     methods: {
-      show_image: function (id) {
+      show_game: function (id) {
         for (let item of this.items) {
           if (item.id === id) {
-            this.showedImage = item
+            this.showedGame = item
           }
         }
         this.dialog = true;

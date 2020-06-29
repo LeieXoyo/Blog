@@ -1,4 +1,6 @@
-from models import Article, Image, Music
+from flask import jsonify
+
+from models import Article, Game, Image, Music
 
 def init_app(app):
 
@@ -6,7 +8,11 @@ def init_app(app):
     def hello():
         return 'Hello, World!'
 
-    @app.route('/test')
-    def test():
-        return f'Result: {Article.all().first().author}'
+    @app.route('/api/games', methods=['GET'])
+    def get_games():
+        return jsonify(Game.all().serialize())
+    
+    @app.route('/api/images', methods=['GET'])
+    def get_images():
+        return jsonify(Image.all().serialize())
         
