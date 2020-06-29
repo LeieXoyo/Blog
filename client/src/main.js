@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 
@@ -12,6 +13,18 @@ import PageMusic from './components/PageMusic'
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
+Vue.use(Vuex);
+
+const store = new Vuex.Store({
+  state: {
+    preparedMusic: null,
+  },
+  mutations: {
+    changeMusic (state, music) {
+      state.preparedMusic = music
+    }
+  }
+})
 
 const routes = [
   { path: '/', component: PageHome},
@@ -29,5 +42,6 @@ const router = new VueRouter({
 new Vue({
   vuetify,
   render: h => h(App),
-  router
+  router: router,
+  store: store
 }).$mount('#app')
