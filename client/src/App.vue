@@ -48,7 +48,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <router-view></router-view>
+      <router-view v-if="isRouterAlive"></router-view>
       <aplayer></aplayer>
     </v-main>
   </v-app>
@@ -58,6 +58,11 @@
   import aplayer from './components/APlayer'
 
   export default {
+    provide () {
+      return {
+        reload: this.reload
+      }
+    },
     props: {
       source: String,
     },
@@ -68,10 +73,19 @@
         { path: '/game', icon: 'mdi-gamepad', text: '星弈' },
         { path: '/article', icon: 'mdi-book', text: '书墨' },
         { path: '/image', icon: 'mdi-image', text: '丹青' },
-      ]
+      ],
+      isRouterAlive: true
     }),
     components: {
       'aplayer': aplayer
+    },
+    methods: {
+      reload() {
+        this.isRouterAlive = false
+        this.$nextTick(function(){
+          this.isRouterAlive = true
+        })
+      }
     }
   }
 </script>

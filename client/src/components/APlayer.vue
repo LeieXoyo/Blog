@@ -35,6 +35,6 @@
 <style>
 #aplayer {
   bottom: 0;
-  width: 300px;
+  width: 280px;
 }
 </style>>

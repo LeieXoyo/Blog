@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, supports_credentials=True)
+    CORS(app)
     from . import db, route
     route.init_app(app)
     return app
