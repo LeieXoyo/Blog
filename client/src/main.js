@@ -17,7 +17,12 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    preparedMusic: null,
+    preparedMusic: {
+      name: null,
+      author: null,
+      file_url: null,
+      cover_url: null,
+    },
   },
   mutations: {
     changeMusic (state, music) {

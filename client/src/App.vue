@@ -32,7 +32,7 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span class="hidden-sm-and-down">LeieXoyo's Blog</span>
+        <span>LeieXoyo's Blog</span>
       </v-toolbar-title>
       <v-text-field
         flat
@@ -49,11 +49,14 @@
     </v-app-bar>
     <v-main>
       <router-view></router-view>
+      <aplayer></aplayer>
     </v-main>
   </v-app>
 </template>
 
 <script>
+  import aplayer from './components/APlayer'
+
   export default {
     props: {
       source: String,
@@ -61,16 +64,20 @@
     data: () => ({
       drawer: null,
       items: [
-        { path: '/', icon: 'mdi-home', text: '主页' },
         { path: '/music', icon: 'mdi-music', text: '商羽' },
         { path: '/game', icon: 'mdi-gamepad', text: '星弈' },
         { path: '/article', icon: 'mdi-book', text: '书墨' },
         { path: '/image', icon: 'mdi-image', text: '丹青' },
-      ],
+      ]
     }),
+    components: {
+      'aplayer': aplayer
+    }
   }
 </script>
 
 <style>
-a { text-decoration: none; }
+a {
+  text-decoration: none;
+}
 </style>>

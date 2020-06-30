@@ -28,6 +28,7 @@
     </v-row>
   </v-container>
 </template>
+
 <script>
   import axios from 'axios'
   export default {
@@ -47,6 +48,7 @@
     methods: {
       play_music: function(music) {
         this.$store.commit('changeMusic', music)
+        document.getElementsByTagName('audio')[0].play()
       }
     }
   }
