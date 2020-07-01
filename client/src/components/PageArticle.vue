@@ -2,10 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12">
-        <v-row
-          :align="alignment"
-          :justify="justify"
-        >
+        <v-row>
           <v-col
             v-for="item in items"
             :key="item.id"
@@ -63,13 +60,21 @@
         <v-divider></v-divider>
         <v-card-actions>
           <v-btn 
-            text
+            color="grey"
             @click="close"
           >关闭</v-btn>
           <v-spacer></v-spacer>
           <v-btn
+            v-if="id != null"
+            color="red"
+            icon
+            @click="delete_article"
+          >
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn
             color="blue"
-            depressed
             @click="submit"
           >提交</v-btn>
         </v-card-actions>
@@ -133,6 +138,9 @@
             })
             .catch(function (err){
               console.log(err)
+              if (err.response.status === 403) {
+                alert("你大概不是作者本人吧?")
+              }
             });
         } else {
           axios
@@ -147,6 +155,20 @@
         }
         this.dialog = false
         this.clear()
+      },
+      delete_article: function () {
+        axios
+          .delete("http://127.0.0.1:5000/api/article/" + this.id)
+          .then(res => {
+            console.log(res.status)
+            this.reload()
+          })
+          .catch(function (err){
+            console.log(err)
+            if (err.response.status === 403) {
+              alert("你大概不是作者本人吧?")
+            }
+          });
       },
       clear: function () {
         this.id = null

@@ -2,10 +2,7 @@
   <v-container fluid>
     <v-row>
       <v-col cols="12">
-        <v-row
-          :align="alignment"
-          :justify="justify"
-        >
+        <v-row>
           <v-col
             v-for="item in items"
             :key="item.id"
