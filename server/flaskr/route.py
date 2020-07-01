@@ -23,7 +23,7 @@ def init_app(app):
         article.title = json_data['title']
         article.author = json_data['author']
         article.content = json_data['content']
-        article.author_ip = request.remote_addr
+        article.author_ip = get_user_ip(request)
         try:
             article.save()
         except:
@@ -35,7 +35,7 @@ def init_app(app):
         article = Article.find(id)
         if article is None:
             return "Not Found", 404
-        if article.author_ip != request.remote_addr:
+        if article.author_ip != get_user_ip(request):
             return "Forbidden", 403
         data = request.get_data()
         json_data = json.loads(data.decode('utf-8'))
@@ -53,7 +53,7 @@ def init_app(app):
         article = Article.find(id)
         if article is None:
             return "Not Found", 404
-        if article.author_ip != request.remote_addr:
+        if article.author_ip != get_user_ip(request):
             return "Forbidden", 403
         try:
             article.delete_flag = 1
@@ -73,3 +73,7 @@ def init_app(app):
     @app.route('/api/musics', methods=['GET'])
     def get_musics():
         return jsonify(Music.all().serialize())
+
+def get_user_ip(request):
+    user_ips = request.headers.get('X-Forwarded-For').split(',')
+    return user_ips[0].strip()
