@@ -20,5 +20,6 @@ poetry install
 
 ### 部署服务端
 ```
-选择喜欢的方式部署flaskr项目
+使用虚拟环境中已有的Gunicorn部署: gunicorn -w 4 -b 127.0.0.1:5000 "flaskr:create_app()"
+or 选择其他喜欢的方式部署flaskr项目.
 ```
