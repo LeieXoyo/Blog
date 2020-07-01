@@ -6,7 +6,8 @@
           <v-col
             v-for="item in items"
             :key="item.id"
-            cols="3"
+            md="3"
+            cols="6"
           >
             <v-card
               @click="show_game(item.id)"

@@ -6,7 +6,8 @@
           <v-col
             v-for="item in items"
             :key="item.id"
-            cols="3"
+            md="3"
+            cols="6"
           >
             <v-card
               @click="show_image(item.id)"
@@ -44,7 +45,7 @@
     }),
     mounted () {
       axios
-        .get("/api/images")
+        .get("http://localhost:5000/api/images")
         .then(res => {
           this.items = res.data
         })
