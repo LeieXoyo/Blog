@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import VueWechatTitle from 'vue-wechat-title'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 
@@ -13,7 +14,8 @@ import PageMusic from './components/PageMusic'
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
-Vue.use(Vuex);
+Vue.use(Vuex)
+Vue.use(VueWechatTitle)
 
 const store = new Vuex.Store({
   state: {
@@ -32,11 +34,11 @@ const store = new Vuex.Store({
 })
 
 const routes = [
-  { path: '/', component: PageHome},
-  { path: '/article', component: PageArticle},
-  { path: '/game', component: PageGame},
-  { path: '/image', component: PageImage},
-  { path: '/music', component: PageMusic}
+  { path: '/', component: PageHome, meta: {title: '主页'} },
+  { path: '/article', component: PageArticle, meta: {title: '书墨'} },
+  { path: '/game', component: PageGame, meta: {title: '星弈'} },
+  { path: '/image', component: PageImage, meta: {title: '丹青'} },
+  { path: '/music', component: PageMusic, meta: {title: '商羽'} }
 ]
 
 const router = new VueRouter({

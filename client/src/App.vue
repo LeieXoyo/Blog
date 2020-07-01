@@ -48,7 +48,10 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <router-view v-if="isRouterAlive"></router-view>
+      <router-view
+        v-if="isRouterAlive"
+        v-wechat-title='$route.meta.title'
+      ></router-view>
       <aplayer></aplayer>
     </v-main>
   </v-app>
