@@ -13,12 +13,12 @@ def init_app(app):
 
     @app.route('/api/articles', methods= ['GET'])
     def get_articles():
-        return jsonify(Article.all().serialize())
+        return jsonify(Article.where('delete_flag', '=', 0).get().serialize())
 
     @app.route('/api/article', methods=['POST'])
     def post_article():
         data = request.get_data()
-        json_data = json.loads(data.decode("utf-8"))
+        json_data = json.loads(data.decode('utf-8'))
         article = Article()
         article.title = json_data['title']
         article.author = json_data['author']
@@ -27,16 +27,40 @@ def init_app(app):
         try:
             article.save()
         except:
-            return "error", 500
-        return "success", 200
+            return "Internal Server Error", 500
+        return "OK", 200
 
     @app.route('/api/article/<int:id>', methods=['PUT'])
     def update_article(id):
-        pass
+        article = Article.find(id)
+        if article is None:
+            return "Not Found", 404
+        if article.author_ip != request.remote_addr:
+            return "Forbidden", 403
+        data = request.get_data()
+        json_data = json.loads(data.decode('utf-8'))
+        article.title = json_data['title']
+        article.author = json_data['author']
+        article.content = json_data['content']
+        try:
+            article.save()
+        except:
+            return "Internal Server Error", 500
+        return "OK", 200
 
     @app.route('/api/article/<int:id>', methods=['DELETE'])
     def delete_article(id):
-        pass
+        article = Article.find(id)
+        if article is None:
+            return "Not Found", 404
+        if article.author_ip != request.remote_addr:
+            return "Forbidden", 403
+        try:
+            article.delete_flag = 1
+            article.save()
+        except:
+            return "Internal Server Error", 500
+        return "OK", 200
 
     @app.route('/api/games', methods=['GET'])
     def get_games():

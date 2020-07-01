@@ -1,6 +1,7 @@
 from flaskr.db import Model
+import pendulum
 
 
 class Game(Model):
-
-    pass
+    def fresh_timestamp(self):
+        return pendulum.now()
