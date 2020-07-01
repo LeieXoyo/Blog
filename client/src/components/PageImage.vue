@@ -44,7 +44,7 @@
     }),
     mounted () {
       axios
-        .get("http://127.0.0.1:5000/api/images")
+        .get("/api/images")
         .then(res => {
           this.items = res.data
         })

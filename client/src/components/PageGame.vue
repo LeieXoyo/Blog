@@ -54,7 +54,7 @@
     }),
     mounted () {
       axios
-        .get("http://127.0.0.1:5000/api/games")
+        .get("/api/games")
         .then(res => {
           this.items = res.data
         })

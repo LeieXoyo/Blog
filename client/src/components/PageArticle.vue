@@ -99,7 +99,7 @@
     }),
     mounted () {
       axios
-        .get("http://127.0.0.1:5000/api/articles")
+        .get("/api/articles")
         .then(res => {
           this.items = res.data
         })
@@ -131,7 +131,7 @@
         }
         if (this.id) {
           axios
-            .put("http://127.0.0.1:5000/api/article/" + this.id, data)
+            .put("/api/article/" + this.id, data)
             .then(res => {
               console.log(res.status)
               this.reload()
@@ -144,7 +144,7 @@
             });
         } else {
           axios
-            .post("http://127.0.0.1:5000/api/article", data)
+            .post("/api/article", data)
             .then(res => {
               console.log(res.status)
               this.reload()
@@ -158,7 +158,7 @@
       },
       delete_article: function () {
         axios
-          .delete("http://127.0.0.1:5000/api/article/" + this.id)
+          .delete("/api/article/" + this.id)
           .then(res => {
             console.log(res.status)
             this.reload()
