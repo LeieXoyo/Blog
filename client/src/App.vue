@@ -43,10 +43,10 @@
         class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon
-          @click="info_dialog = true"
-        >mdi-google-assistant</v-icon>
+      <v-btn
+        icon
+        @click="info_dialog = true"
+      ><v-icon>mdi-google-assistant</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
