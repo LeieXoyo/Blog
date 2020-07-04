@@ -1,5 +1,3 @@
-import os
-
 from orator import DatabaseManager, Model
 
 db_file = 'flaskr.db'
