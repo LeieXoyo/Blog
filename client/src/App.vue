@@ -89,7 +89,7 @@
           <v-card-actions>
             <v-btn
               icon
-              href="mailto:reagan@gen.li"
+              href="mailto:gen@gen.li"
             ><v-icon>mdi-email</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
