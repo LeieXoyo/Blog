@@ -32,7 +32,7 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span>LeieXoyo's Blog</span>
+        <span>Project Erigeron</span>
       </v-toolbar-title>
       <v-text-field
         flat
