@@ -45,7 +45,7 @@
       <v-spacer></v-spacer>
       <v-btn
         icon
-        href="https://cloud.gen.li/"
+        href="https://yun.gen.li/"
         target="_blank"
       ><v-icon>mdi-cloud-circle</v-icon>
       </v-btn>
