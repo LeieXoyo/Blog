@@ -32,17 +32,29 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span>Project Erigeron</span>
+        <span>板栗的爹的博客</span>
       </v-toolbar-title>
       <v-text-field
         flat
         solo-inverted
         hide-details
         prepend-inner-icon="mdi-magnify"
-        label="Search"
+        label="搜索"
         class="hidden-sm-and-down"
       ></v-text-field>
       <v-spacer></v-spacer>
+      <v-btn
+        icon
+        href="https://cloud.gen.li/"
+        target="_blank"
+      ><v-icon>mdi-cloud-circle</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        href="https://mp.gen.li/"
+        target="_blank"
+      ><v-icon>mdi-email-variant</v-icon>
+      </v-btn>
       <v-btn
         icon
         @click="info_dialog = true"
