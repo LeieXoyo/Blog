@@ -51,7 +51,7 @@
       </v-btn>
       <v-btn
         icon
-        href="https://mp.gen.li/"
+        href="https://mail.gen.li/"
         target="_blank"
       ><v-icon>mdi-email-variant</v-icon>
       </v-btn>
