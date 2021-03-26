@@ -32,7 +32,7 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span>板栗的爹的博客</span>
+        <span>板栗の爹の博客</span>
       </v-toolbar-title>
       <v-text-field
         flat
@@ -45,7 +45,7 @@
       <v-spacer></v-spacer>
       <v-btn
         icon
-        href="https://yun.gen.li/"
+        href="https://cloud.gen.li/"
         target="_blank"
       ><v-icon>mdi-cloud-circle</v-icon>
       </v-btn>
