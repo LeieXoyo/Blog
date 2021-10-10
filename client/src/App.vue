@@ -32,7 +32,7 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span>玈馥Blog</span>
+        <span>板栗御用铲屎官的博客</span>
       </v-toolbar-title>
       <v-text-field
         flat
