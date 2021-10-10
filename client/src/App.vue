@@ -32,7 +32,7 @@
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <span>板栗の爹の博客</span>
+        <span>玈馥Blog</span>
       </v-toolbar-title>
       <v-text-field
         flat
@@ -45,9 +45,9 @@
       <v-spacer></v-spacer>
       <v-btn
         icon
-        href="https://cloud.gen.li/"
+        href="https://files.gen.li/"
         target="_blank"
-      ><v-icon>mdi-cloud-circle</v-icon>
+      ><v-icon>mdi-file-cabinet</v-icon>
       </v-btn>
       <v-btn
         icon
