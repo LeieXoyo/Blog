@@ -45,18 +45,6 @@
       <v-spacer></v-spacer>
       <v-btn
         icon
-        href="https://files.gen.li/"
-        target="_blank"
-      ><v-icon>mdi-file-cabinet</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        href="https://mail.gen.li/"
-        target="_blank"
-      ><v-icon>mdi-email-variant</v-icon>
-      </v-btn>
-      <v-btn
-        icon
         @click="info_dialog = true"
       ><v-icon>mdi-google-assistant</v-icon>
       </v-btn>
