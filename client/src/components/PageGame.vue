@@ -14,7 +14,7 @@
             >
               <v-img
                 class="align-end"
-                :src="item.img_url"
+                :src="item.imgUrl"
               >
                 <v-card-title>{{ item.name }}</v-card-title>
               </v-img>
@@ -37,7 +37,7 @@
       <iframe
         height="100%"
         width="100%"
-        :src="showedGame ? showedGame.html_url : ''"
+        :src="showedGame ? showedGame.htmlUrl : ''"
       >
       </iframe>
     </v-dialog>

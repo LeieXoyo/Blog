@@ -14,7 +14,7 @@
             >
               <v-img
                 class="align-end"
-                :src="item.cover_url"
+                :src="item.coverUrl"
               >
                 <v-card-title>{{ item.name }}</v-card-title>
                 <v-card-subtitle>{{ item.author }}</v-card-subtitle>

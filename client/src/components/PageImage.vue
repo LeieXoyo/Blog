@@ -13,7 +13,7 @@
               @click="show_image(item.id)"
             >
               <v-img
-                :src="item.img_url"
+                :src="item.imgUrl"
               >
               </v-img>
             </v-card>
@@ -26,7 +26,7 @@
     >
       <v-card>
         <v-img
-          :src="showedImage ? showedImage.img_url : ''"
+          :src="showedImage ? showedImage.imgUrl : ''"
         >
         </v-img>
       </v-card>

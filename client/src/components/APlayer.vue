@@ -3,8 +3,8 @@
     <aplayer autoplay :music="{
           title: this.$store.state.preparedMusic.name,
           artist: this.$store.state.preparedMusic.author,
-          src: this.$store.state.preparedMusic.file_url,
-          pic: this.$store.state.preparedMusic.cover_url
+          src: this.$store.state.preparedMusic.fileUrl,
+          pic: this.$store.state.preparedMusic.coverUrl
         }">
     </aplayer>
   </div>
