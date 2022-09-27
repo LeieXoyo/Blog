@@ -1,4 +1,0 @@
-databases:
-    sqlite:
-        driver: sqlite
-        database: flaskr.db
