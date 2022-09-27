@@ -70,10 +70,10 @@ namespace server.Controllers
             {
                 return Problem("You are not the author of this article.");
             }
-
-	    db_article.Title = article.Title;
-	    db_article.Author = article.Author;
-	    db_article.Content = article.Content;
+            
+            db_article.Title = article.Title;
+            db_article.Author = article.Author;
+            db_article.Content = article.Content;
 
             _context.Entry(db_article).State = EntityState.Modified;
 
