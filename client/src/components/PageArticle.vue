@@ -100,8 +100,9 @@
     }),
     mounted () {
       axios
-        .get("/api/articles")
+        .get("/api/Article")
         .then(res => {
+          console.log(res)
           this.items = res.data
         })
         .catch(function (err){
@@ -131,21 +132,22 @@
           "content": this.content
         }
         if (this.id) {
+          data.id = this.id
           axios
-            .put("/api/article/" + this.id, data)
+            .put("/api/Article/" + this.id, data)
             .then(res => {
               console.log(res.status)
               this.reload()
             })
             .catch(function (err){
               console.log(err)
-              if (err.response.status === 403) {
+              if (err.response.data.detail === 'You are not the author of this article.') {
                 alert("你大概不是作者本人吧?")
               }
             });
         } else {
           axios
-            .post("/api/article", data)
+            .post("/api/Article", data)
             .then(res => {
               console.log(res.status)
               this.reload()
@@ -159,14 +161,14 @@
       },
       delete_article: function () {
         axios
-          .delete("/api/article/" + this.id)
+          .delete("/api/Article/" + this.id)
           .then(res => {
             console.log(res.status)
             this.reload()
           })
           .catch(function (err){
             console.log(err)
-            if (err.response.status === 403) {
+            if (err.response.data.detail === 'You are not the author of this article.') {
               alert("你大概不是作者本人吧?")
             }
           });

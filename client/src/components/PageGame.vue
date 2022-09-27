@@ -55,7 +55,7 @@
     }),
     mounted () {
       axios
-        .get("/api/games")
+        .get("/api/Game")
         .then(res => {
           this.items = res.data
         })

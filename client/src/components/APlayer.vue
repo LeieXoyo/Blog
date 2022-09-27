@@ -21,7 +21,7 @@
     },
     mounted () {
       axios
-        .get("/api/musics")
+        .get("/api/Music")
         .then(res => {
           this.$store.commit('changeMusic', res.data[0])
         })

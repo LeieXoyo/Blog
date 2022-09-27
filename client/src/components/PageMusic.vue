@@ -36,7 +36,7 @@
     }),
     mounted () {
       axios
-        .get("/api/musics")
+        .get("/api/Music")
         .then(res => {
           this.items = res.data
         })
