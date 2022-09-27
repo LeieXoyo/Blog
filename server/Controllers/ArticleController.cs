@@ -59,17 +59,23 @@ namespace server.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutArticle(long id, Article article)
         {
-            if (id != article.Id)
-            {
-                return BadRequest();
-            }
-            System.Console.WriteLine($"article.AuthorIp: {article.AuthorIp}, GetUserIp: {GetUserIp()}");
-            if (article.AuthorIp != GetUserIp())
+	    var db_article = await _context.Articles.FindAsync(id);
+
+	    if (db_article == null)
+	    {
+		return NotFound();
+	    }
+
+            if (db_article.AuthorIp != GetUserIp())
             {
                 return Problem("You are not the author of this article.");
             }
 
-            _context.Entry(article).State = EntityState.Modified;
+	    db_article.Title = article.Title;
+	    db_article.Author = article.Author;
+	    db_article.Content = article.Content;
+
+            _context.Entry(db_article).State = EntityState.Modified;
 
             try
             {
