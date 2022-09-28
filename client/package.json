@@ -9,27 +9,27 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
-    "core-js": "^3.6.5",
+    "core-js": "^3.25.3",
     "hls.js": "^0.13.2",
-    "vue": "^2.6.11",
+    "vue": "^2.7.10",
     "vue-aplayer": "^1.6.1",
-    "vue-router": "^3.3.4",
-    "vue-wechat-title": "^2.0.5",
-    "vuetify": "^2.2.11",
-    "vuex": "^3.4.0"
+    "vue-router": "^3.6.5",
+    "vue-wechat-title": "^2.0.7",
+    "vuetify": "^2.6.10",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-eslint": "~4.4.0",
-    "@vue/cli-service": "~4.4.0",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.19.0",
+    "sass": "^1.55.0",
     "sass-loader": "^8.0.0",
-    "vue-cli-plugin-vuetify": "~2.0.5",
-    "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.3.0"
+    "vue-cli-plugin-vuetify": "^2.0.9",
+    "vue-template-compiler": "^2.7.10",
+    "vuetify-loader": "^1.9.2"
   },
   "eslintConfig": {
     "root": true,
