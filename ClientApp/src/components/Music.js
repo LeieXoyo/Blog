@@ -30,23 +30,28 @@ export const Music = props => {
     }
 
     return (
-        <div className="grid grid-flow-row-dense grid-cols-2 gap-4 lg:grid-cols-4">
+        <>
             {
-                loading ? <span className="loading loading-ring loading-lg"></span> : musics.map(m => {
-                    return (
-                        <div key={m.id} className="card card-compact bg-base-100 shadow-xl">
-                            <figure><img src={m.coverUrl} alt="Games" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">{m.name}</h2>
-                                <p>{m.author}</p>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary" onClick={(e) => playMusic(m.fileUrl)}>播放</button>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })
+                loading ? <span className="loading loading-ring loading-lg self-center justify-self-center"></span> :
+                    <div className="grid grid-flow-row-dense grid-cols-2 gap-4 lg:grid-cols-4">
+                        {
+                            musics.map(m => {
+                                return (
+                                    <div key={m.id} className="card card-compact bg-base-100 shadow-xl">
+                                        <figure><img src={m.coverUrl} alt="Games" /></figure>
+                                        <div className="card-body">
+                                            <h2 className="card-title">{m.name}</h2>
+                                            <p>{m.author}</p>
+                                            <div className="card-actions justify-end">
+                                                <button className="btn btn-primary" onClick={(e) => playMusic(m.fileUrl)}>播放</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
             }
-        </div>
+        </>
     );
 }

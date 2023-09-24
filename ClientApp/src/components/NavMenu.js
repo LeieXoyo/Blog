@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMusicStore } from '../store';
 
@@ -6,8 +6,25 @@ import { useMusicStore } from '../store';
 export const NavMenu = props => {
   const selectdMusic = useMusicStore((state) => state.selectdMusic)
 
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('themeValue') === 'forest');
+
+  useLayoutEffect(() => {
+    const root = document.querySelector('html');
+    const changeThemeInput = document.getElementById('changeTheme');
+    if (isDarkMode)
+    {
+      changeThemeInput.checked = false;
+      root.setAttribute('data-theme', 'forest');
+    }
+    else
+    {
+      changeThemeInput.checked = true;
+      root.setAttribute('data-theme', 'corporate');
+    }
+  });
+
   function ToggleMusicState(e) {
-    const audio = document.getElementById('bgMusic')
+    const audio = document.getElementById('bgMusic');
     if (selectdMusic === '') {
       return
     }
@@ -19,7 +36,8 @@ export const NavMenu = props => {
   }
 
   function ToggleTheme(e) {
-    document.querySelector('html').setAttribute('data-theme', e.target.checked ? 'corporate' : 'forest');
+    localStorage.setItem('themeValue', e.target.checked ? 'corporate' : 'forest');
+    setIsDarkMode(localStorage.getItem('themeValue') === 'forest');
   }
 
   return (
