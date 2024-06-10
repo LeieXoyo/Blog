@@ -100,7 +100,7 @@
     }),
     mounted () {
       axios
-        .get("/api/Article")
+        .get("https://api.gen.li/Blog/Article")
         .then(res => {
           console.log(res)
           this.items = res.data
@@ -134,7 +134,7 @@
         if (this.id) {
           data.id = this.id
           axios
-            .put("/api/Article/" + this.id, data)
+            .put("https://api.gen.li/Blog/Article/" + this.id, data)
             .then(res => {
               console.log(res.status)
               this.reload()
@@ -147,7 +147,7 @@
             });
         } else {
           axios
-            .post("/api/Article", data)
+            .post("https://api.gen.li/Blog/Article", data)
             .then(res => {
               console.log(res.status)
               this.reload()
@@ -161,7 +161,7 @@
       },
       delete_article: function () {
         axios
-          .delete("/api/Article/" + this.id)
+          .delete("https://api.gen.li/Blog/Article/" + this.id)
           .then(res => {
             console.log(res.status)
             this.reload()

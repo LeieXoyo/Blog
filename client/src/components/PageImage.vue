@@ -45,7 +45,7 @@
     }),
     mounted () {
       axios
-        .get("/api/Image")
+        .get("https://api.gen.li/Blog/Image")
         .then(res => {
           this.items = res.data
         })

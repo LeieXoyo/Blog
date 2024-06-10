@@ -36,7 +36,7 @@
     }),
     mounted () {
       axios
-        .get("/api/Music")
+        .get("https://api.gen.li/Blog/Music")
         .then(res => {
           this.items = res.data
         })
