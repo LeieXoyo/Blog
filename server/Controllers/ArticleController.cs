@@ -4,7 +4,7 @@ using server.Models;
 
 namespace server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ArticleController : ControllerBase
     {
@@ -17,13 +17,22 @@ namespace server.Controllers
 
         // GET: api/Article
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
+        public async Task<ActionResult<IEnumerable<ArticleDto>>> GetArticles()
         {
             if (_context.Articles == null)
             {
                 return NotFound();
             }
-            return await _context.Articles.Where(m=>m.DeleteFlag==0).ToListAsync();
+            return await _context.Articles.Where(m => m.DeleteFlag == 0).Select(m => new ArticleDto()
+            {
+                Id = m.Id,
+                Title = m.Title,
+                Author = m.Author,
+                Content = m.Content,
+                CreatedAt = m.CreatedAt,
+                UpdatedAt = m.UpdatedAt
+
+            }).ToListAsync();
         }
 
         // GET: api/Article/5
@@ -40,7 +49,7 @@ namespace server.Controllers
             {
                 return NotFound();
             }
-            
+
             if (article.AuthorIp != GetUserIp())
             {
                 return Problem("You are not the author of this article.");
@@ -52,20 +61,20 @@ namespace server.Controllers
         // PUT: api/Article/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArticle(long id, Article article)
+        public async Task<IActionResult> PutArticle(long id, ArticleDto article)
         {
-	    var db_article = await _context.Articles.FindAsync(id);
+            var db_article = await _context.Articles.FindAsync(id);
 
-	    if (db_article == null)
-	    {
-		return NotFound();
-	    }
+            if (db_article == null)
+            {
+                return NotFound();
+            }
 
             if (db_article.AuthorIp != GetUserIp())
             {
                 return Problem("You are not the author of this article.");
             }
-            
+
             db_article.Title = article.Title;
             db_article.Author = article.Author;
             db_article.Content = article.Content;
@@ -94,14 +103,23 @@ namespace server.Controllers
         // POST: api/Article
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Article>> PostArticle(Article article)
+        public async Task<ActionResult<Article>> PostArticle(ArticleDto article)
         {
             if (_context.Articles == null)
             {
                 return Problem("Entity set 'BlogContext.Articles'  is null.");
             }
-            article.AuthorIp = GetUserIp();
-            _context.Articles.Add(article);
+            _context.Articles.Add(new Article()
+            {
+                Id = article.Id,
+                Title = article.Title,
+                Author = article.Author,
+                AuthorIp = GetUserIp(),
+                Content = article.Content,
+                DeleteFlag = 0,
+                CreatedAt = article.CreatedAt,
+                UpdatedAt = article.UpdatedAt
+            });
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetArticle", new { id = article.Id }, article);
@@ -116,7 +134,7 @@ namespace server.Controllers
                 return NotFound();
             }
             var article = await _context.Articles.FindAsync(id);
-            
+
             if (article == null)
             {
                 return NotFound();

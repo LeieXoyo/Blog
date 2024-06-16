@@ -4,7 +4,7 @@ using server.Models;
 
 namespace server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class MusicController : ControllerBase
     {
@@ -19,10 +19,10 @@ namespace server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Music>>> GetMusics()
         {
-          if (_context.Musics == null)
-          {
-              return NotFound();
-          }
+            if (_context.Musics == null)
+            {
+                return NotFound();
+            }
             return await _context.Musics.ToListAsync();
         }
 

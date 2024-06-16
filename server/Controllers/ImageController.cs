@@ -4,7 +4,7 @@ using server.Models;
 
 namespace server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ImageController : ControllerBase
     {
@@ -19,10 +19,10 @@ namespace server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Image>>> GetImages()
         {
-          if (_context.Images == null)
-          {
-              return NotFound();
-          }
+            if (_context.Images == null)
+            {
+                return NotFound();
+            }
             return await _context.Images.ToListAsync();
         }
 

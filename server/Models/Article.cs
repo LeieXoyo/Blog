@@ -14,4 +14,14 @@ namespace server.Models
         public byte[]? CreatedAt { get; set; }
         public byte[]? UpdatedAt { get; set; }
     }
+
+    public class ArticleDto
+    {
+        public long Id { get; set; }
+        public string Title { get; set; } = null!;
+        public string Author { get; set; } = null!;
+        public string Content { get; set; } = null!;
+        public byte[]? CreatedAt { get; set; }
+        public byte[]? UpdatedAt { get; set; }
+    }
 }

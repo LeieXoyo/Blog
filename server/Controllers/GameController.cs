@@ -4,7 +4,7 @@ using server.Models;
 
 namespace server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class GameController : ControllerBase
     {
@@ -19,10 +19,10 @@ namespace server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames()
         {
-          if (_context.Games == null)
-          {
-              return NotFound();
-          }
+            if (_context.Games == null)
+            {
+                return NotFound();
+            }
             return await _context.Games.ToListAsync();
         }
 
