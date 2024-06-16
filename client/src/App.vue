@@ -63,7 +63,7 @@
         <v-card class="mx-auto">
           <v-list-item>
             <v-list-item-avatar>
-              <img src="/static/images/avatar.jpg">
+              <img src="https://blog.bucket.gen.li/images/avatar.jpg">
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title class="headline">玈馥</v-list-item-title>
@@ -79,7 +79,7 @@
           </v-list-item>
 
           <v-img
-            src="/static/images/info_dialog.jpg"
+            src="https://blog.bucket.gen.li/images/info_dialog.jpg"
           ></v-img>
 
           <v-card-text>
